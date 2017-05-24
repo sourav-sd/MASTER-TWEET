@@ -1,0 +1,30 @@
+{
+  "name": "master-tweet",
+  "version": "1.0.0",
+  "description": "Blog based website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sourav-sd/MASTER-TWEET.git"
+  },
+  "keywords": [
+    "Daily",
+    "Walk"
+  ],
+  "author": "ionic team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sourav-sd/MASTER-TWEET/issues"
+  },
+  "homepage": "https://github.com/sourav-sd/MASTER-TWEET#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.2",
+    "nodemon": "^1.11.0"
+  }
+}

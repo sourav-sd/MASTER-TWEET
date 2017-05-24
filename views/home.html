@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>The Daily Walk</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+           $scope.signUp = function(data, e){
+               if(!data){
+                   e.preventDefault();
+               }
+               else{
+                   console.log(data);
+               }
+           }
+
+            $scope.signIn = function(data, e){
+               if(!data){
+                   e.preventDefault();
+               }
+               else{
+                   console.log(data);
+               }
+           }
+        });
+    </script>
+
+
 </head>
-<body>
+
+<body ng-app="myApp" ng-controller="myCtrl">
 
 <nav class="navbar navbar-inverse walk-head">
     <div class="container-fluid">
@@ -50,7 +78,7 @@
 
 <div class="container">
 
-    <!-- Sign Up Modal -->
+    <!------------ Sign Up Modal ------------->
 
     <div class="modal fade" id="signUpModal" role="dialog">
         <div class="modal-dialog modal-padding">
@@ -60,34 +88,35 @@
                     <h4 class="modal-title"><span class="glyphicon glyphicon-user"></span>Sign Up</h4>
                 </div>
                 <div class="container signup-container">
-                    <form class="reg-form">
+                    <form class="reg-form" action="/user" method="POST" ng-model="signup">
                         <div class="form-group">
                             <label for="email">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
+                            <input type="text" class="form-control" id="name" ng-model="signup.name" placeholder="Enter your name" name="name">
                         </div>
                         <div class="form-group">
                             <label for="email">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="Enter your address" name="address">
+                            <input type="text" class="form-control" id="address" ng-model="signup.address" placeholder="Enter your address" name="address">
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            <input type="email" class="form-control" id="email" ng-model="signup.email" placeholder="Enter email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                            <input type="password" class="form-control" id="pwd" ng-model="signup.password" placeholder="Enter password" name="pwd">
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" name="remember"> Remember me</label>
+                            <label><input type="checkbox" name="remember" ng-model="signup.remember"> Remember me</label>
                         </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success" name="btn" value="signup" ng-click="signUp(signup, $event)">Register</button>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Login Modal -->
+    <!-------------- Login Modal -------------->
 
     <div class="modal fade" id="signInModal" role="dialog">
         <div class="modal-dialog modal-padding">
@@ -97,27 +126,26 @@
                     <h4 class="modal-title"><span class="glyphicon glyphicon-user"></span>Login</h4>
                 </div>
                 <div class="container signup-container">
-                    <form class="reg-form">
+                    <form class="reg-form" action="/user" method="POST" ng-model="login">
 
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="logemail" placeholder="Enter email" name="email">
+                            <input type="email" class="form-control" id="logemail" ng-model="login.email" placeholder="Enter email" name="email">
                         </div>
                         <div class="form-group">
                             <label for="pwd">Password:</label>
-                            <input type="password" class="form-control" id="logpwd" placeholder="Enter password" name="pwd">
+                            <input type="password" class="form-control" id="logpwd" ng-model="login.password" placeholder="Enter password" name="pwd">
                         </div>
                         <div class="checkbox">
                             <label><input type="checkbox" name="remember"> Remember me</label>
                         </div>
-                        <button type="submit" class="btn btn-success">Login</button>
+                        <button type="submit" class="btn btn-success" name="btn" value="login" ng-click="signIn(login,$event)">Login</button>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-
 
 </div>
 
