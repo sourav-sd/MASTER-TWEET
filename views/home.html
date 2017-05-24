@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -45,12 +46,17 @@
         </form>
 
         <ul class="nav navbar-nav navbar-right">
-            <li data-toggle="modal" data-target="#signUpModal"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li data-toggle="modal" data-target="#signInModal"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li data-toggle="modal" data-target="#signUpModal" ng-show="showLogin"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li data-toggle="modal" data-target="#signInModal" ng-show="showLogin"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li ng-show="showLogout"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
         </ul>
 
     </div>
 </nav>
+
+    <div class="container" style="text-align: center;margin-top: 80px;" ng-show="showLoading">
+        <i class="fa fa-spinner fa-spin" style="font-size:75px"></i>
+    </div>
 
 <div class="container">
 

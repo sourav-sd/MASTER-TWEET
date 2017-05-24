@@ -62,7 +62,6 @@ app.post('/user', function(req, res){
             console.log("Empty Data!");
         }
         else{
-
             var email = personInfo.email;
             var password = personInfo.pwd;
 
@@ -70,7 +69,8 @@ app.post('/user', function(req, res){
                 if(err)
                     res.status(500).send();
                 else
-                    res.send(Person);
+                    console.log(Person);
+                    //res.send(Person);
             })
             console.log(personInfo);
             console.log('Login!');
