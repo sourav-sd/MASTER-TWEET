@@ -62,6 +62,16 @@ app.post('/user', function(req, res){
             console.log("Empty Data!");
         }
         else{
+
+            var email = personInfo.email;
+            var password = personInfo.pwd;
+
+            Person.findOne({email:email, password: password}, function(err, Person){
+                if(err)
+                    res.status(500).send();
+                else
+                    res.send(Person);
+            })
             console.log(personInfo);
             console.log('Login!');
         }
