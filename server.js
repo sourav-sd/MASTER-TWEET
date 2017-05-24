@@ -70,6 +70,6 @@ app.post('/user', function(req, res){
 });
 
 
-app.listen(3000, function () {
-    console.log('Website listening on port 3000!');
+var server = app.listen(3000, function () {
+    console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
 });
