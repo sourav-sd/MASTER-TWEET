@@ -85,7 +85,7 @@
                         <div class="checkbox">
                             <label><input type="checkbox" name="remember" ng-model="signup.remember"> Remember me</label>
                         </div>
-                        <button type="submit" class="btn btn-success" name="btn" value="signup" ng-click="signUp(signup, $event)">Register</button>
+                        <button type="submit" class="btn btn-success" name="btn" value="signup" id="load2" ng-disabled="userForm.$invalid || signup.name == undefined || signup.password == undefined || signup.email == undefined || signup.address == undefined" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Register Processing" ng-click="signUp(signup, $event)">Register</button>
 
                     </form>
                 </div>
@@ -103,7 +103,7 @@
                     <h4 class="modal-title"><span class="glyphicon glyphicon-user"></span>Login</h4>
                 </div>
                 <div class="container signup-container">
-                    <form class="reg-form" ng-model="login">
+                    <form class="reg-form" ng-model="login" name="userForm" novalidate>
 
                         <div class="form-group">
                             <label for="email">Email:</label>
@@ -116,7 +116,7 @@
                         <div class="checkbox">
                             <label><input type="checkbox" name="remember"> Remember me</label>
                         </div>
-                        <button type="submit" class="btn btn-success" name="btn" value="login" id="load" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Logging In" ng-click="signIn(login,$event)">Login</button>
+                        <button type="submit" class="btn btn-success" name="btn" value="login" id="load" ng-disabled="userForm.$invalid || login.email == undefined || login.password == undefined" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Logging In" ng-click="signIn(login,$event)">Login</button>
 
                     </form>
                 </div>

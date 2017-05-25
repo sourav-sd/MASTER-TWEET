@@ -33,7 +33,7 @@ app.post('/register', function(req,res){
         name: req.body.name,
         address: req.body.address,
         email: req.body.email,
-        password: req.body.pwd
+        password: req.body.password
     });
     newPerson.save(function(err, Person){
         if(err)
@@ -44,6 +44,7 @@ app.post('/register', function(req,res){
     });
 
 });
+
 
 app.post('/login', function(req,res){
     console.log(req.body);
@@ -60,63 +61,7 @@ app.post('/login', function(req,res){
             res.send(Person);
             console.log('Logged In!');
         }
-
     })
-
-});
-
-
-
-
-app.get('/user', function(req, res){
-   // res.sendFile(path.join(__dirname+ '/views' + '/home.html'));
-});
-
-app.post('/user', function(req, res){
-    var personInfo = req.body;
-    var inputValue = req.body.btn;
-
-    if(inputValue == 'signup'){
-        if(!personInfo.name || !personInfo.address || !personInfo.email ||!personInfo.pwd){
-            console.log("Empty Data!");
-        }
-        else{
-            var newPerson = new Person({
-                name: personInfo.name,
-                address: personInfo.address,
-                email: personInfo.email,
-                password: personInfo.pwd
-            });
-            newPerson.save(function(err, Person){
-                if(err)
-                    res.send("Error please check again!!");
-                else
-                    res.send("Successfully Saved");
-            });
-            console.log(personInfo);
-            console.log('Register!');
-        }
-    }
-    else{
-        if(!personInfo.email ||!personInfo.pwd){
-            console.log("Empty Data!");
-        }
-        else{
-            var email = personInfo.email;
-            var password = personInfo.pwd;
-
-            Person.findOne({email:email, password: password}, function(err, Person){
-                if(err)
-                    res.status(500).send();
-                else
-                    console.log(Person);
-                //res.send(Person);
-            })
-            console.log(personInfo);
-            console.log('Login!');
-        }
-    }
-
 });
 
 

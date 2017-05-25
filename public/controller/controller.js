@@ -13,18 +13,34 @@ app.controller('myCtrl', function($scope,$http) {
     }
 
     $scope.showLoading = false;
+
+ /*-------------------- Register ------------------------*/
+
     $scope.signUp = function(data, e){
-        if(!data){
+        if(data.email == undefined || data.password == undefined){
             e.preventDefault();
-            console.log('Empty...');
+            alert("Please fill all fields properly!");
         }
         else{
+            $(document).on('click','#load2', function() {
+                var $this = $(this);
+                $this.button('loading');
+            });
+            console.log($scope.signup);
             $http.post('/register',$scope.signup).then(function(res){
                 console.log(res);
+                $('#load2').button('reset');
+                $('#signUpModal').modal('hide');
+                $scope.signup = '';
+            },function(err){
+                $('#load').button('reset');
+                console.log(err);
             });
             console.log($scope.signup);
         }
     }
+
+    /*-------------------- Login ------------------------*/
 
     $scope.signIn = function(data, e){
         if(data.email == undefined || data.password == undefined){
