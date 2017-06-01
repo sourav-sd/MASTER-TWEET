@@ -4,7 +4,7 @@ var path = require('path');
 var app = express();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://sourav55:delgence55@ds149551.mlab.com:49551/master_tweet');
+mongoose.connect('mongodb://sourav_dutta:delgence55@ds159371.mlab.com:59371/project_management');
 
 var db = mongoose.connection;
 
@@ -21,10 +21,11 @@ var personSchema = mongoose.Schema({
     name: String,
     address: String,
     email: String,
+    role : String,
     password: String
 });
 
-var Person = mongoose.model("Person", personSchema);
+var Person = mongoose.model("Users", personSchema);
 
 
 app.post('/register', function(req,res){
@@ -33,6 +34,7 @@ app.post('/register', function(req,res){
         name: req.body.name,
         address: req.body.address,
         email: req.body.email,
+        role : req.body.role,
         password: req.body.password
     });
     newPerson.save(function(err, Person){

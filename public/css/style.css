@@ -209,7 +209,8 @@ color: #fff;
 }
 
 .small-logo{ 
-	padding:0 32px;
+	/*padding:0 32px;*/
+	padding:0 0px;
 }
 
 .main-section{
@@ -867,4 +868,56 @@ border: 2px solid #fff;
 .delay-12s { 
 	animation-delay: 1.2s; 
 	-webkit-animation-delay: 1.2s; 
+}
+
+/*----------- Modal --------------------*/
+.signup-container{
+    padding: 10px 25px 25px 25px !important;
+    width: 100% !important;
+}
+.modal-padding{
+    padding-top: 70px;
+}
+.reg-form{
+    width: 100% !important;
+}
+.reg-form > button{
+    width: 30%;
+}
+.modal-adjust{
+    text-align: center;
+}
+.modal-adjust >h4 > span{
+    margin-right: 10px;
+}
+.logmodal{
+    display: inline-block !important;
+    color: #222222;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    line-height: 20px;
+    margin: 17px 32px !important;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.logmodal:hover{
+    cursor:pointer;
+    color: #7cc576;
+}
+.logbtn{
+    background-color: #7cc576 !important;
+    color: #fff;
+}
+.logbtn:hover{
+    color: #fff;
+}
+.user-role{
+    background-color: #fff !important;
+    border: 1px solid #cccccc !important;
+    color: #555555 !important;
+}
+.user-role > span{
+    margin-left: 10px !important;
 }
