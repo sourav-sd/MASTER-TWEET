@@ -30,8 +30,19 @@ app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
                     target: '_blank'
                 });
             },function(err){
-                $('#load').button('reset');
+                $('#load2').button('reset');
                 console.log(err);
+                $.notify({
+                    // options
+                    icon: 'fa fa-thumbs-up',
+                    title: 'Error...',
+                    message: 'This Email already registered...',
+                    url: '',
+                    target: '_blank'
+                },{
+                    // settings
+                    type: 'danger'
+                });
             });
         }
     }

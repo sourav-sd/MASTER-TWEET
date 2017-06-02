@@ -20,7 +20,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var personSchema = mongoose.Schema({
     name: String,
     address: String,
-    email: String,
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
     role : String,
     password: String
 });
@@ -39,7 +43,7 @@ app.post('/register', function(req,res){
     });
     newPerson.save(function(err, Person){
         if(err)
-            res.send("Error please check again!!");
+            res.status(500).send();
         else
             res.send(Person);
         console.log('Registered!');
