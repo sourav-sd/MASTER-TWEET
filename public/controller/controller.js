@@ -129,7 +129,6 @@ app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
 
 
 app.controller('AdminCtrl', function($scope) {
-    alert('ADMIN');
     window.onbeforeunload = function() {
         if(document.referrer == "http://localhost:3000/"){
             alert('zzz');

@@ -225,3 +225,29 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+/*---------------New Custom---------------*/
+
+.deadline{
+    font-size: 60%;
+    color: #333358;
+}
+.add_project{
+    cursor: pointer;
+}
+.add_project >a >span{
+    margin-left: 5px;
+}
+.admin-details>img{
+    width: 13%;
+    height: 65px;
+    border-radius: 35px;
+}
+.admin-details{
+    border: none !important;
+    margin: 13px;
+    display: inline-flex;
+}
+.admin-details > div{
+    margin-left: -300px;
+}
