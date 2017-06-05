@@ -1,5 +1,26 @@
 
 var app = angular.module('project_management', []);
+//'ui.router'
+/*app.config(function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/home');
+
+    $stateProvider
+
+    // =================  HOME  ======================= //
+        .state('home', {
+            url: '/home',
+            templateUrl: '../index.html',
+            controller: 'HomeCtrl'
+        })
+
+        // =================  Admin Dashboard  ======================= //
+        .state('admin', {
+            url: '/admin',
+            templateUrl: '../AdminDashboard/index.html',
+            controller: 'AdminCtrl'
+        });
+});*/
 
 app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
 
@@ -84,7 +105,7 @@ app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
                     target: '_blank'
                 });
                 $timeout(function(){
-                    $window.location.href = 'Admin Dashboard/index.html';
+                    $window.location.href = 'AdminDashboard/index.html';
                 },1100);
             },function(err){
                 $('#load').button('reset');
@@ -108,5 +129,10 @@ app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
 
 
 app.controller('AdminCtrl', function($scope) {
-
+    alert('ADMIN');
+    window.onbeforeunload = function() {
+        if(document.referrer == "http://localhost:3000/"){
+            alert('zzz');
+        }
+    }
 });
