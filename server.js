@@ -17,7 +17,7 @@ db.once('open', function() {
     console.log('MongoDB Successfully Connected!!');
 });
 
-app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
