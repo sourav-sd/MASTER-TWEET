@@ -1,5 +1,25 @@
 
 var app = angular.module('project_management', []);
+
+// ===================  Service  ======================= //
+
+app.factory('userData', function() {
+
+    var users = [];
+
+    return {
+        getUser: function() {
+            return users;
+        },
+        addUser: function(newObj) {
+            users.push(newObj);
+            return true;
+        }
+    };
+});
+
+// ====================================================== //
+
 //'ui.router'
 /*app.config(function($stateProvider, $urlRouterProvider) {
 
@@ -22,7 +42,7 @@ var app = angular.module('project_management', []);
         });
 });*/
 
-app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
+app.controller('HomeCtrl', function($scope,$rootScope,$http,$window,$timeout,userData) {
 
     /*-------------------- Register ------------------------*/
 
@@ -93,6 +113,10 @@ app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
             console.log($scope.login);
             $http.post('/login',$scope.login).then(function(res){
                 console.log(res);
+                $rootScope.user = res;
+
+                userData.addUser({name: res.data.name, email: res.data.email, role: res.data.role});
+
                 $('#load').button('reset');
                 $('#signInModal').modal('hide');
                 $scope.login = '';
@@ -104,9 +128,9 @@ app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
                     url: '',
                     target: '_blank'
                 });
-                $timeout(function(){
+             /*   $timeout(function(){
                     $window.location.href = 'AdminDashboard/index.html';
-                },1100);
+                },1100);*/
             },function(err){
                 $('#load').button('reset');
                 console.log(err);
@@ -128,7 +152,9 @@ app.controller('HomeCtrl', function($scope,$http,$window,$timeout) {
 });
 
 
-app.controller('AdminCtrl', function($scope) {
+app.controller('AdminCtrl', function($scope,$rootScope,userData) {
+    $scope.loguser = userData.getUser();
+    console.log($scope.loguser);
     window.onbeforeunload = function() {
         if(document.referrer == "http://localhost:3000/"){
             alert('zzz');

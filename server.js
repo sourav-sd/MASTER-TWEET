@@ -1,8 +1,12 @@
 var express = require('express');
+var app = express();
+
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+
 var bodyParser = require('body-parser');
 var path = require('path');
 var crypto = require('crypto');
-var app = express();
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://sourav_dutta:delgence55@ds159371.mlab.com:59371/project_management');
@@ -49,6 +53,10 @@ personSchema.methods.validPassword = function(password) {
 
 var Person = mongoose.model("Users", personSchema);
 
+app.get('/', function(req, res) {
+	res.end('Hello YouTube!');
+});
+
 
 app.post('/register', function(req,res){
 
@@ -67,6 +75,38 @@ app.post('/register', function(req,res){
         else
             res.send(Person);
         console.log('Registered!');
+    });
+
+});
+
+
+app.get('/email', function(req,res){
+
+    var nodemailer = require('nodemailer');
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'souravdutta.delgence@gmail.com',
+            pass: 'delgence@12345'
+        }
+    });
+
+    var mailOptions = {
+        from: 'souravdutta.delgence@gmail.com',
+        to: 'dutta.sourav840@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!',
+        html: '<h4>HEY THERE</h4>'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.send('Done!')
+        }
     });
 
 });
@@ -96,6 +136,6 @@ app.post('/login', function(req,res){
     })
 });
 
-var server = app.listen(3000, function () {
-    console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
+app.listen(server_port, server_ip_address, function () {
+	 console.log( "Listening on " + server_ip_address + ", server_port " + server_port );
 });

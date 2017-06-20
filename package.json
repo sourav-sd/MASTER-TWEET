@@ -25,6 +25,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongoose": "^4.10.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "sendgrid": "^5.1.1"
   }
 }

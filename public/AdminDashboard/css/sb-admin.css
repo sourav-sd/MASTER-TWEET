@@ -242,6 +242,7 @@ ul.alert-dropdown {
     width: 13%;
     height: 65px;
     border-radius: 35px;
+    border: 1px solid #ccc;
 }
 .admin-details{
     border: none !important;
