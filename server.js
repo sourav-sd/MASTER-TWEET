@@ -22,8 +22,9 @@ create_project = require('./controller/project/add_project.js');
 /*================ connect to the controller js file with respect to the url  ========================*/
 app.use('/login', login);
 app.use('/register',register);
+app.use('/create_project',create_project);
 
 
 app.listen(8080, function () {
-	 console.log( "Server Running 8080" );
+	 console.log( "Server Running Successfully on 8080" );
 });

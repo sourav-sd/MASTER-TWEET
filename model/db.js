@@ -75,12 +75,17 @@ var projectSchema = mongoose.Schema({
     }]
 });
 
+var Project = mongoose.model("Projects", projectSchema);
+
 module.exports = {
     getModel: function(){
         return Person;
     },
     getPersonSchema: function(){
         return personSchema;
+    },
+    getProject:function(){
+        return Project;
     }
 };
 
