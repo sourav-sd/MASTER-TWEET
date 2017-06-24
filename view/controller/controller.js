@@ -158,9 +158,9 @@ app.controller('AdminCtrl', function($scope,$rootScope,userData,$http) {
 
     $scope.newMilestone = [];
     $scope.newTask = [];
-    $scope.project = [];
-    $scope.project.basic = [];
-    $scope.project.details = [];
+    //$scope.project = [];
+    //$scope.project.basic = [];
+    //$scope.project.details = [];
 
     $scope.create_proj_head = 'Project Basic Information';
 
