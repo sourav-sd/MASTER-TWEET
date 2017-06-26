@@ -42,7 +42,7 @@ router.post('/project',bodyParser, function(req,res){
     newProject.save(function(err, Project){
         if(err)
             //console.log('error');
-            res.status(500).send({'error':err});
+            res.status(500).send();
 
         else
             res.send(Project);
