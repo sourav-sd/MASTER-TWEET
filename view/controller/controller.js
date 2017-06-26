@@ -1,6 +1,40 @@
 
 var app = angular.module('project_management', []);
 
+
+/*======================= filter for time format ===============*/
+
+app.filter("monthFilter",function(){
+    return function(input){
+        var formatted_day = moment(input).format('LL');
+        var month_day = formatted_day.split(',')[0];
+        var year = formatted_day.split(',')[1];
+        var month = month_day.split(' ')[0];
+        var day = month_day.split(' ')[1];
+        return month;
+    }
+});
+app.filter("dayFilter",function(){
+    return function(input){
+        var formatted_day = moment(input).format('LL');
+        var month_day = formatted_day.split(',')[0];
+        var year = formatted_day.split(',')[1];
+        var month = month_day.split(' ')[0];
+        var day = month_day.split(' ')[1];
+        return day;
+    }
+});
+app.filter("yearFilter",function(){
+    return function(input){
+        var formatted_day = moment(input).format('LL');
+        var month_day = formatted_day.split(',')[0];
+        var year = formatted_day.split(',')[1];
+        var month = month_day.split(' ')[0];
+        var day = month_day.split(' ')[1];
+        return year;
+    }
+});
+
 app.config(['$qProvider', function ($qProvider) {
     $qProvider.errorOnUnhandledRejections(false);
 }]);
@@ -164,6 +198,7 @@ app.controller('AdminCtrl', function($scope,$rootScope,userData,$http) {
     $scope.newTask = [];
 
     $scope.create_proj_head = 'Project Basic Information';
+    $scope.projectAdd = false;
 
     $scope.step1 = true;
     $scope.step2 = false;
@@ -215,20 +250,53 @@ app.controller('AdminCtrl', function($scope,$rootScope,userData,$http) {
         $scope.newTask.splice(index, 1);
     };
 
+
+    /*------------------------- Add New Project --------------------------*/
+
+    $scope.newProject = function(){
+        if($scope.projectAdd == false){
+            $scope.projectAdd = true;
+        }
+        else{
+            $scope.projectAdd = false;
+        }
+
+    }
+
     /*------------------------- Create New Project --------------------------*/
 
     $scope.createProject = function(){
-        console.log($scope.project);
+        $scope.project.basic.create_date=new Date();
         $http.post('/project/addProject', $scope.project).then(function(res){
             console.log(res);
+            $scope.projectAdd = false;
         });
 
     };
 
+
     /*------------------------ Get all project ---------------------------*/
 
-    $http.get('/project/allProject').then(function(res){
-        console.log(res);
-    });
+    $scope.getAllProject =function(){
+        $http.get('/project/allProject').then(function(res){
+            console.log(res);
+            $scope.projects = res.data;
+        });
+    };
+    $scope.getAllProject();
+
+    /*------------------------ Animate Progress bar ---------------------------*/
+
+    $scope.animateProgressBar =function(){
+        $scope.progress_val = 0;
+        setInterval(function(){
+            if($scope.progress_val < 55){
+                $scope.progress_val = 1+$scope.progress_val;
+                document.getElementById('projectProgress').value = $scope.progress_val;
+            }
+
+        },30)
+    };
+    $scope.animateProgressBar();
 
 });

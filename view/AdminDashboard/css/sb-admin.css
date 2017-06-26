@@ -315,3 +315,97 @@ ul.alert-dropdown {
     margin-top: -15px;
     margin-right: -16px;
 }
+
+
+/*------------------------------ Show Project Style 26/06/2016 --------------------------------*/
+
+
+.project-container {
+    margin-top: 80px;
+}
+.project-item {
+    border: 1px solid #31B0D5;
+}
+.dist-img {
+    width: 120px;
+    height: 90px;
+    display: inline-block;
+    background-color: #31B0D5;
+    color: #fff;
+}
+.dist-img h2 {
+    color: #fff;
+    padding-top: 12px;
+    font-size: 34px;
+    font-weight: 500;
+    margin-bottom: 1px;
+}
+.dist-img p {
+    text-align: center;
+    font-size: 19px;
+}
+.dist-info{
+    width: calc(95% - 120px);
+    display: inline-block;
+    margin-left: 25px;
+}
+.dist-info h3 {
+    font-size: 15px;
+    font-family: serif;
+}
+.dist-info p {
+    font-size: 12px;
+}
+/*.dist-info > p > progress {
+    width: 60%;
+    background: #bada55 !important;
+}*/
+progress {
+    color: #fff;
+    font-size: .6em;
+    line-height: 1.5em;
+    text-indent: .5em;
+    width: 60%;
+    height: 2.2em;
+    border: 1px solid #fff;
+    margin-right: 25px;
+    margin-bottom: -5px;
+    border-radius: 20px;
+}
+
+progress::-webkit-progress-bar { background: #ccc;border-radius: 20px; }
+progress::-webkit-progress-value { background: #31B0D5; border-radius: 20px;}
+
+progress::-moz-progress-bar { background: #ccc;border-radius: 20px; }
+progress::-moz-progress-value { background: #31B0D5; border-radius: 20px;}
+
+.searching-div{
+    width: 50%;
+    margin: 0px 0px 20px 0px;
+}
+.searching-div > div > div >div > button:focus{
+    outline: 0;
+}
+.add-new-proj-link {
+    float: right;
+    margin-top: -48px;
+}
+.add-proj-icon {
+    font-size: 17px;
+    margin-left: 7px;
+}
+.show-project-list{
+    float: right;
+    margin-right: 26px;
+    cursor: pointer;
+}
+.show-project-list > span{
+    margin-right: 8px;
+    font-size: 14px;
+    color: #23527C;
+}
+.show-project-list > i{
+    font-size: 20px;
+    color: #23527C;
+}
+

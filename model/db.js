@@ -66,7 +66,8 @@ var projectSchema = mongoose.Schema({
         clientId:{type: String,required: true},        // later on change this string to mongoose.Schema.ObjectId
         end_date: {type: Date,required: true},
         start_date : {type: Date,required: true},
-        priority: String
+        priority: String,
+        create_date: Date
     },
     details:{
         description:{type: String,required: true},

@@ -565,178 +565,59 @@
         <!-- /#page-wrapper -->
 
         <div id="page-wrapper">
-            <div class="add-new-proj" ng-show="step1">
-                <div class="page-header">
-                    <h3>{{create_proj_head}}</h3>
-                    <div class="progress-container">
-                        <div class="step1">
-                            <div class="step_no">1</div>
-                            <div class="step_path"></div>
+            <div class="create-project-container" ng-show="projectAdd">
+                <div class="add-new-proj" ng-show="step1">
+                    <div class="page-header">
+                        <div class="show-project-list" ng-click="newProject()">
+                            <span> Project List  </span>
+                            <i class="fa fa-list " aria-hidden="true"></i>
                         </div>
-                        <div class="step1">
-                            <div class="step_no">2</div>
-                            <div class="step_path"></div>
-                        </div>
-                        <div class="step1">
-                            <div class="step_no">3</div>
+
+                        <h3>{{create_proj_head}}</h3>
+                        <div class="progress-container">
+                            <div class="step1">
+                                <div class="step_no">1</div>
+                                <div class="step_path"></div>
+                            </div>
+                            <div class="step1">
+                                <div class="step_no">2</div>
+                                <div class="step_path"></div>
+                            </div>
+                            <div class="step1">
+                                <div class="step_no">3</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="container signup-container">
-                    <form class="reg-form" ng-model="project.basic" name="addProjStepOne" novalidate>
-                        <div class="form-group">
-                            <label for="p_name">Project Name</label>
-                            <input type="text" class="form-control" id="p_name" ng-model="project.basic.name" placeholder="Project Name" name="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="p_about">About Project</label>
-                            <textarea class="form-control" id="p_about" ng-model="project.basic.about" placeholder="About Project" name="about"></textarea>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="status">Client Name</label>
-                                    <select class="form-control"id="status" ng-model="project.basic.clientId">
-                                        <option value="" selected disabled>Select Client</option>
-                                        <option value="silus">Silus</option>
-                                        <option value="looqi">Looqi</option>
-                                        <option value="mars">Mars</option>
-                                    </select>
-                                </div>
+                    <div class="container signup-container">
+                        <form class="reg-form" ng-model="project.basic" name="addProjStepOne" novalidate>
+                            <div class="form-group">
+                                <label for="p_name">Project Name</label>
+                                <input type="text" class="form-control" id="p_name" ng-model="project.basic.name" placeholder="Project Name" name="name">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="priority">Prority</label>
-                                    <select class="form-control"id="priority" ng-model="project.basic.priority" >
-                                        <option value="" selected disabled>Select Priority</option>
-                                        <option value="project_manager">Normal</option>
-                                        <option value="client">Medium</option>
-                                        <option value="developer">High</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="p_about">About Project</label>
+                                <textarea class="form-control" id="p_about" ng-model="project.basic.about" placeholder="About Project" name="about"></textarea>
                             </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="startdate">Project Start Date</label>
-                                    <input class="form-control" id="startdate" type="date" ng-model="project.basic.start_date">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="enddate">Project End Date</label>
-                                    <input class="form-control" id="enddate" type="date" ng-model="project.basic.end_date">
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load2" ng-disabled="addProjStepOne.$invalid || project.basic.name == undefined || project.basic.about == undefined || project.basic.clientId == undefined || project.basic.start_date == undefined || project.basic.end_date == undefined" ng-click="goNext('step1')">Next</button>
-
-                    </form>
-                </div>
-            </div>
-
-
-
-
-
-            <div class="add-new-proj" ng-show="step2">
-                <div class="page-header">
-                    <h3>{{create_proj_head}}</h3>
-                    <div class="progress-container">
-                        <div class="step1">
-                            <div class="step_no fill-bg-no">1</div>
-                            <div class="step_path fill-bg-path"></div>
-                        </div>
-                        <div class="step1">
-                            <div class="step_no">2</div>
-                            <div class="step_path"></div>
-                        </div>
-                        <div class="step1">
-                            <div class="step_no">3</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container signup-container">
-                    <form class="reg-form" ng-model="project.details" name="addProjStepTwo" novalidate>
-
-                        <div class="form-group">
-                            <label for="p_desc">Project Description</label>
-                            <textarea class="form-control" id="p_desc" ng-model="project.details.description" placeholder="Project Description" name="address"></textarea>
-                        </div>
-                        <div class="form-group" ng-click="addMilestone()">
-                            <label for="p_milstone">Add Milestone</label>
-                            <span id="p_milstone" class="milestone-no"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
-                        </div>
-
-                        <div class="new_task" data-ng-repeat="newMilestone in newMilestone">
-                            <i class="fa fa-minus-circle remove-task" aria-hidden="true" ng-click="removeMilestone($index)"></i>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="mstone_title">Milestone Title</label>
-                                        <input id="mstone_title" class="form-control new-milestone-name" type="text" ng-model="newMilestone.milestone_name" placeholder="Milestone Title">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="new-milestone">
-                                <textarea id="mstone_desc" class="form-control" ng-model="newMilestone.milestone_desc" placeholder="Milestone Description" name="milestone"></textarea>
-                            </div>
-                        </div>
-
-
-                        <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load3"  ng-click="goNext('step2')"> Next </button><!--ng-disabled="addProjStepTwo.$invalid || project.details.milestone_desc == undefined"-->
-
-                    </form>
-                </div>
-            </div>
-
-
-
-            <div class="add-new-proj" ng-show="step3">
-                <div class="page-header">
-                    <h3>{{create_proj_head}}</h3>
-                    <div class="progress-container">
-                        <div class="step1">
-                            <div class="step_no">1</div>
-                            <div class="step_path fill-bg-path"></div>
-                        </div>
-                        <div class="step1">
-                            <div class="step_no fill-bg-no">2</div>
-                            <div class="step_path"></div>
-                        </div>
-                        <div class="step1">
-                            <div class="step_no">3</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container signup-container">
-                    <form class="reg-form" ng-model="project.details" name="addProjStepThree" novalidate>
-
-                        <div class="form-group" ng-click="addTask()">
-                            <label for="new_task">Add New Task</label>
-                            <span id="new_task" class="milestone-no"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
-                        </div>
-
-                        <div class="new_task" data-ng-repeat="newTask in newTask">
-                            <i class="fa fa-minus-circle remove-task" aria-hidden="true" ng-click="removeTask($index)"></i>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="task_title">Task Title</label>
-                                        <input id="task_title" class="form-control new-milestone-name" type="text" ng-model="newTask.task_name" placeholder="Task Title">
+                                        <label for="status">Client Name</label>
+                                        <select class="form-control"id="status" ng-model="project.basic.clientId">
+                                            <option value="" selected disabled>Select Client</option>
+                                            <option value="silus">Silus</option>
+                                            <option value="looqi">Looqi</option>
+                                            <option value="mars">Mars</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="developer">Assign Developer</label>
-                                        <select class="form-control"id="developer" ng-model="newTask.assigned_developer" >
-                                            <option value="" selected disabled>Select Developer</option>
-                                            <option value="developer 1">Developer 1</option>
-                                            <option value="developer 2">Developer 2</option>
-                                            <option value="developer 3">Developer 3</option>
+                                        <label for="priority">Prority</label>
+                                        <select class="form-control"id="priority" ng-model="project.basic.priority" >
+                                            <option value="" selected disabled>Select Priority</option>
+                                            <option value="project_manager">Normal</option>
+                                            <option value="client">Medium</option>
+                                            <option value="developer">High</option>
                                         </select>
                                     </div>
                                 </div>
@@ -745,32 +626,196 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="task_startdate">Task Start Date</label>
-                                        <input class="form-control" id="task_startdate" type="date" ng-model="newTask.task_start_date">
+                                        <label for="startdate">Project Start Date</label>
+                                        <input class="form-control" id="startdate" type="date" ng-model="project.basic.start_date">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="task_enddate">Task End Date</label>
-                                        <input class="form-control" id="task_enddate" type="date" ng-model="newTask.task_end_date">
+                                        <label for="enddate">Project End Date</label>
+                                        <input class="form-control" id="enddate" type="date" ng-model="project.basic.end_date">
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="task_desc">
-                                <label for="task_desc">Task Description</label>
-                                <textarea id="task_desc" class="form-control" ng-model="newTask.task_desc" placeholder="Task Description" name="task"></textarea>
+                            <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load2" ng-disabled="addProjStepOne.$invalid || project.basic.name == undefined || project.basic.about == undefined || project.basic.clientId == undefined || project.basic.start_date == undefined || project.basic.end_date == undefined" ng-click="goNext('step1')">Next</button>
+
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="add-new-proj" ng-show="step2">
+                    <div class="page-header">
+                        <h3>{{create_proj_head}}</h3>
+                        <div class="progress-container">
+                            <div class="step1">
+                                <div class="step_no fill-bg-no">1</div>
+                                <div class="step_path fill-bg-path"></div>
+                            </div>
+                            <div class="step1">
+                                <div class="step_no">2</div>
+                                <div class="step_path"></div>
+                            </div>
+                            <div class="step1">
+                                <div class="step_no">3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container signup-container">
+                        <form class="reg-form" ng-model="project.details" name="addProjStepTwo" novalidate>
+
+                            <div class="form-group">
+                                <label for="p_desc">Project Description</label>
+                                <textarea class="form-control" id="p_desc" ng-model="project.details.description" placeholder="Project Description" name="address"></textarea>
+                            </div>
+                            <div class="form-group" ng-click="addMilestone()">
+                                <label for="p_milstone">Add Milestone</label>
+                                <span id="p_milstone" class="milestone-no"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                            </div>
+
+                            <div class="new_task" data-ng-repeat="newMilestone in newMilestone">
+                                <i class="fa fa-minus-circle remove-task" aria-hidden="true" ng-click="removeMilestone($index)"></i>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="mstone_title">Milestone Title</label>
+                                            <input id="mstone_title" class="form-control new-milestone-name" type="text" ng-model="newMilestone.milestone_name" placeholder="Milestone Title">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="new-milestone">
+                                    <textarea id="mstone_desc" class="form-control" ng-model="newMilestone.milestone_desc" placeholder="Milestone Description" name="milestone"></textarea>
+                                </div>
                             </div>
 
 
+                            <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load3"  ng-click="goNext('step2')"> Next </button><!--ng-disabled="addProjStepTwo.$invalid || project.details.milestone_desc == undefined"-->
+
+                        </form>
+                    </div>
+                </div>
+
+
+
+                <div class="add-new-proj" ng-show="step3">
+                    <div class="page-header">
+                        <h3>{{create_proj_head}}</h3>
+                        <div class="progress-container">
+                            <div class="step1">
+                                <div class="step_no">1</div>
+                                <div class="step_path fill-bg-path"></div>
+                            </div>
+                            <div class="step1">
+                                <div class="step_no fill-bg-no">2</div>
+                                <div class="step_path"></div>
+                            </div>
+                            <div class="step1">
+                                <div class="step_no">3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container signup-container">
+                        <form class="reg-form" ng-model="project.details" name="addProjStepThree" novalidate>
+
+                            <div class="form-group" ng-click="addTask()">
+                                <label for="new_task">Add New Task</label>
+                                <span id="new_task" class="milestone-no"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                            </div>
+
+                            <div class="new_task" data-ng-repeat="newTask in newTask">
+                                <i class="fa fa-minus-circle remove-task" aria-hidden="true" ng-click="removeTask($index)"></i>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="task_title">Task Title</label>
+                                            <input id="task_title" class="form-control new-milestone-name" type="text" ng-model="newTask.task_name" placeholder="Task Title">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="developer">Assign Developer</label>
+                                            <select class="form-control"id="developer" ng-model="newTask.assigned_developer" >
+                                                <option value="" selected disabled>Select Developer</option>
+                                                <option value="developer 1">Developer 1</option>
+                                                <option value="developer 2">Developer 2</option>
+                                                <option value="developer 3">Developer 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="task_startdate">Task Start Date</label>
+                                            <input class="form-control" id="task_startdate" type="date" ng-model="newTask.task_start_date">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="task_enddate">Task End Date</label>
+                                            <input class="form-control" id="task_enddate" type="date" ng-model="newTask.task_end_date">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="task_desc">
+                                    <label for="task_desc">Task Description</label>
+                                    <textarea id="task_desc" class="form-control" ng-model="newTask.task_desc" placeholder="Task Description" name="task"></textarea>
+                                </div>
+
+
                             </div>
 
 
-                        <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load4" ng-click="createProject()"> Create Project </button>
+                            <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load4" ng-click="createProject()"> Create Project </button>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
+
+            <div class="project-container" ng-hide="projectAdd">
+
+                <div class="schedule-container">
+                    <div class="searching-div">
+                        <div class="item item-input-inset search-name">
+                            <div class="input-group add-on">
+                                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" ng-model="search.basic.name">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-new-proj-link" ng-click="newProject()">
+                        <a href="">
+                           Add New Project <i class="fa fa-plus add-proj-icon" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="project-list">
+                        <!--ng-repeat="dist in  users | filter:search" ng-click="goUser(dist.id,dist.name)"-->
+                        <div class="project-item" ng-repeat="project in  projects | filter:search" ng-click="goUser(dist.id,dist.name)">
+                            <div class="dist-img">
+
+                                <h2>{{project.basic.create_date | dayFilter:project.basic.create_date}}</h2>
+                                <p>{{project.basic.create_date | monthFilter:project.basic.create_date}}</p>
+                            </div>
+                            <div class="dist-info">
+                                <h3>{{project.basic.name}}</h3>
+                                <p>{{project.basic.clientId}}</p>
+                                <p><progress id="projectProgress" value="0" max="100"></progress><span>   Days Left:  </span>22</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
 
 
 
@@ -796,6 +841,7 @@
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
     <script src="js/jquery.responsiveTabs.js"></script>
+    <script src="js/moment.js"></script>
 
 </body>
 
