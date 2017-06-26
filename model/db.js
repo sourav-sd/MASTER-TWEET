@@ -71,18 +71,18 @@ var projectSchema = mongoose.Schema({
     },
     details:{
         description:{type: String,required: true},
-        milestone:{
+        milestone:[{
             milestone_name: { type: String, required: true },
             milestone_desc: { type: String, required: true }
-        }
+        }]
     },
-    task:{
+    task:[{
         task_name: { type: String, required: true },
         task_desc: { type: String, required: true },
         assigned_developer: String,      // later on change this string to mongoose.Schema.ObjectId
         task_start_date: Date,
         task_end_date: Date
-    }
+    }]
 });
 
 var Project = mongoose.model("Projects", projectSchema);
