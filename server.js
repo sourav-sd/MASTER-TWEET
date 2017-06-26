@@ -16,13 +16,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 /*================ linking all controller js file ========================*/
 login = require('./controller/user/login.js');
 register = require('./controller/user/registration.js');
-create_project = require('./controller/project/add_project.js');
+project = require('./controller/project/project.js');
 
 
 /*================ connect to the controller js file with respect to the url  ========================*/
 app.use('/login', login);
 app.use('/register',register);
-app.use('/create_project',create_project);
+app.use('/project',project);
 
 
 app.listen(8080, function () {

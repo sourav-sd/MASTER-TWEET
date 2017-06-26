@@ -219,9 +219,16 @@ app.controller('AdminCtrl', function($scope,$rootScope,userData,$http) {
 
     $scope.createProject = function(){
         console.log($scope.project);
-        $http.post('/create_project/project', $scope.project).then(function(res){
+        $http.post('/project/addProject', $scope.project).then(function(res){
             console.log(res);
         });
-    }
+
+    };
+
+    /*------------------------ Get all project ---------------------------*/
+
+    $http.get('/project/allProject').then(function(res){
+        console.log(res);
+    });
 
 });
