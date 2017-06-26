@@ -1,7 +1,3 @@
-/**
- * Created by pradeepkar on 22/06/17.
- */
-
 var express = require('express');
 var router = express.Router();
 
@@ -29,7 +25,7 @@ router.post('/register', function(req,res){
             res.status(500).send();
         else
             res.send(Person);
-        console.log('Registered!');
+            console.log('Registered!');
     });
 
 });

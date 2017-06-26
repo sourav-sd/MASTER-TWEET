@@ -1,8 +1,7 @@
-/**
- * Created by pradeepkar on 22/06/17.
- */
 
 var mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://sourav_dutta:delgence55@ds159371.mlab.com:59371/project_management');
 
@@ -62,7 +61,7 @@ var Person = mongoose.model("Users", personSchema);
 });*/
 var projectSchema = mongoose.Schema({
     basic:{
-        name: {type: String,required: true},
+        name: {type: String,unique: true,required: true},
         about: {type: String,required: true},
         clientId:{type: String,required: true},        // later on change this string to mongoose.Schema.ObjectId
         end_date: {type: Date,required: true},
