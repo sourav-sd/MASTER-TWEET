@@ -1,6 +1,11 @@
 
 var app = angular.module('project_management', []);
 
+
+app.config(['$qProvider', function ($qProvider) {
+    $qProvider.errorOnUnhandledRejections(false);
+}]);
+
 // ===================  Service  ======================= //
 
 app.factory('userData', function() {
@@ -158,9 +163,9 @@ app.controller('AdminCtrl', function($scope,$rootScope,userData,$http) {
 
     $scope.newMilestone = [];
     $scope.newTask = [];
-    $scope.project = [];
+    /*$scope.project = [];
     $scope.project.basic = [];
-    $scope.project.details = [];
+    $scope.project.details = [];*/
 
     $scope.create_proj_head = 'Project Basic Information';
 

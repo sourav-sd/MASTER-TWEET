@@ -664,7 +664,7 @@
 
                         <div class="form-group">
                             <label for="p_desc">Project Description</label>
-                            <textarea class="form-control" id="p_desc" ng-model="project.details.desc" placeholder="Project Description" name="address"></textarea>
+                            <textarea class="form-control" id="p_desc" ng-model="project.details.description" placeholder="Project Description" name="address"></textarea>
                         </div>
                         <div class="form-group" ng-click="addMilestone()">
                             <label for="p_milstone">Add Milestone</label>
@@ -677,17 +677,17 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="mstone_title">Milestone Title</label>
-                                        <input id="mstone_title" class="form-control new-milestone-name" type="text" ng-model="newMilestone.name" placeholder="Milestone Title">
+                                        <input id="mstone_title" class="form-control new-milestone-name" type="text" ng-model="newMilestone.details.milestone_name" placeholder="Milestone Title">
                                     </div>
                                 </div>
                             </div>
                             <div class="new-milestone">
-                                <textarea id="mstone_desc" class="form-control" ng-model="newMilestone.desc" placeholder="Milestone Description" name="milestone"></textarea>
+                                <textarea id="mstone_desc" class="form-control" ng-model="newMilestone.details.milestone_desc" placeholder="Milestone Description" name="milestone"></textarea>
                             </div>
                         </div>
 
 
-                        <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load3" ng-disabled="addProjStepTwo.$invalid || project.details.desc == undefined" ng-click="goNext('step2')"> Next </button>
+                        <button type="button" class="btn logbtn btn-infoo" name="btn" value="Next" id="load3"  ng-click="goNext('step2')"> Next </button><!--ng-disabled="addProjStepTwo.$invalid || project.details.milestone_desc == undefined"-->
 
                     </form>
                 </div>
@@ -726,13 +726,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="task_title">Task Title</label>
-                                        <input id="task_title" class="form-control new-milestone-name" type="text" ng-model="newTask.name" placeholder="Task Title">
+                                        <input id="task_title" class="form-control new-milestone-name" type="text" ng-model="newTask.task_name" placeholder="Task Title">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="developer">Assign Developer</label>
-                                        <select class="form-control"id="developer" ng-model="newTask.developer" >
+                                        <select class="form-control"id="developer" ng-model="newTask.assigned_developer" >
                                             <option value="" selected disabled>Select Developer</option>
                                             <option value="developer 1">Developer 1</option>
                                             <option value="developer 2">Developer 2</option>
@@ -746,20 +746,20 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="task_startdate">Task Start Date</label>
-                                        <input class="form-control" id="task_startdate" type="date" ng-model="newTask.start_date">
+                                        <input class="form-control" id="task_startdate" type="date" ng-model="newTask.task_start_date">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="task_enddate">Task End Date</label>
-                                        <input class="form-control" id="task_enddate" type="date" ng-model="newTask.end_date">
+                                        <input class="form-control" id="task_enddate" type="date" ng-model="newTask.task_end_date">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="task_desc">
                                 <label for="task_desc">Task Description</label>
-                                <textarea id="task_desc" class="form-control" ng-model="newTask.desc" placeholder="Task Description" name="task"></textarea>
+                                <textarea id="task_desc" class="form-control" ng-model="newTask.task_desc" placeholder="Task Description" name="task"></textarea>
                             </div>
 
 

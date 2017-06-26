@@ -36,43 +36,53 @@ var personSchema = mongoose.Schema({
 var Person = mongoose.model("Users", personSchema);
 
 /*-------------------------- Project Schema ----------------*/
-var projectSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: true
+/*var projectSchema = mongoose.Schema({
+    basic:{
+            name: {type: String,required: true},
+            about: {type: String,required: true},
+            clientId:{type: String,required: true},        // later on change this string to mongoose.Schema.ObjectId
+            end_date: {type: Date,required: true},
+            start_date : {type: Date,required: true},
+            priority: String
     },
-    about: {
-        type: String,
-        required: true
+    details:{
+            description:{type: String,required: true},
+            milestone:[{
+                milestone_name: { type: String, required: true },
+                milestone_desc: { type: String, required: true }
+            }]
     },
-    client_id:{
-        type: mongoose.Schema.ObjectId,
-        required: true
-    },
-    end_date: {
-        type: Date,
-        required: true
-    },
-    start_date : {
-        type: Date,
-        required: true
-    },
-    priority: String,
-    description:{
-        type: String,
-        required: true
-    },
-    milestone:[{
-            milestone_name: { type: String, required: true },
-            milestone_desc: { type: String, required: true }
-    }],
     task:[{
         task_name: { type: String, required: true },
         task_desc: { type: String, required: true },
-        assigned_developer: mongoose.Schema.ObjectId,
+        assigned_developer: String,      // later on change this string to mongoose.Schema.ObjectId
         task_start_date: Date,
         task_end_date: Date
     }]
+});*/
+var projectSchema = mongoose.Schema({
+    basic:{
+        name: {type: String,required: true},
+        about: {type: String,required: true},
+        clientId:{type: String,required: true},        // later on change this string to mongoose.Schema.ObjectId
+        end_date: {type: Date,required: true},
+        start_date : {type: Date,required: true},
+        priority: String
+    },
+    details:{
+        description:{type: String,required: true},
+        milestone:{
+            milestone_name: { type: String, required: true },
+            milestone_desc: { type: String, required: true }
+        }
+    },
+    task:{
+        task_name: { type: String, required: true },
+        task_desc: { type: String, required: true },
+        assigned_developer: String,      // later on change this string to mongoose.Schema.ObjectId
+        task_start_date: Date,
+        task_end_date: Date
+    }
 });
 
 var Project = mongoose.model("Projects", projectSchema);
