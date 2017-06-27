@@ -1,86 +1,9 @@
+angular.module('admin-controller', [])
 
-var app = angular.module('project_management', []);
 
 
-/*======================= filter for time format ===============*/
 
-app.filter("monthFilter",function(){
-    return function(input){
-        var formatted_day = moment(input).format('LL');
-        var month_day = formatted_day.split(',')[0];
-        var year = formatted_day.split(',')[1];
-        var month = month_day.split(' ')[0];
-        var day = month_day.split(' ')[1];
-        return month;
-    }
-});
-app.filter("dayFilter",function(){
-    return function(input){
-        var formatted_day = moment(input).format('LL');
-        var month_day = formatted_day.split(',')[0];
-        var year = formatted_day.split(',')[1];
-        var month = month_day.split(' ')[0];
-        var day = month_day.split(' ')[1];
-        return day;
-    }
-});
-app.filter("yearFilter",function(){
-    return function(input){
-        var formatted_day = moment(input).format('LL');
-        var month_day = formatted_day.split(',')[0];
-        var year = formatted_day.split(',')[1];
-        var month = month_day.split(' ')[0];
-        var day = month_day.split(' ')[1];
-        return year;
-    }
-});
-
-app.config(['$qProvider', function ($qProvider) {
-    $qProvider.errorOnUnhandledRejections(false);
-}]);
-
-// ===================  Service  ======================= //
-
-app.factory('userData', function() {
-
-    var users = [];
-
-    return {
-        getUser: function() {
-            return users;
-        },
-        addUser: function(newObj) {
-            users.push(newObj);
-            return true;
-        }
-    };
-});
-
-// ====================================================== //
-
-//'ui.router'
-/*app.config(function($stateProvider, $urlRouterProvider) {
-
-    $urlRouterProvider.otherwise('/home');
-
-    $stateProvider
-
-    // =================  HOME  ======================= //
-        .state('home', {
-            url: '/home',
-            templateUrl: '../index.html',
-            controller: 'HomeCtrl'
-        })
-
-        // =================  Admin Dashboard  ======================= //
-        .state('admin', {
-            url: '/admin',
-            templateUrl: '../AdminDashboard/index.html',
-            controller: 'AdminCtrl'
-        });
-});*/
-
-app.controller('HomeCtrl', function($scope,$rootScope,$http,$window,$timeout,userData) {
+.controller('HomeCtrl', function($scope,$rootScope,$http,$window,$timeout,userData) {
 
 
 
@@ -189,10 +112,9 @@ app.controller('HomeCtrl', function($scope,$rootScope,$http,$window,$timeout,use
 
         }
     }
-});
+})
 
-
-app.controller('AdminCtrl', function($scope,$rootScope,userData,$http) {
+.controller('AdminCtrl', function($scope,$rootScope,userData,$http,$location) {
 
     $scope.newMilestone = [];
     $scope.newTask = [];
@@ -299,4 +221,18 @@ app.controller('AdminCtrl', function($scope,$rootScope,userData,$http) {
     };
     $scope.animateProgressBar();
 
+    /*------------------------ Navigate to Project Details Page ---------------------------- */
+
+    $scope.goProject = function(project_id){
+        $rootScope.project_id = project_id;
+        //console.log($rootScope.project_id);
+        $location.path( "/projectDetails" );
+    }
+
+})
+.controller("ProjectDetailsCtrl", function($http,$scope,$rootScope){
+    console.log($rootScope.project_id);
+    $http.get('/project/getProjectById/'+ $rootScope.project_id).then(function(res){
+        console.log(res);
+    });
 });

@@ -43,10 +43,31 @@ router.get('/allProject',function(req,res){
         }
         else{
             res.send(Project);
+            //console.log(Project);
+        }
+    });
+
+});
+router.get('/getProjectById/:projectId',function(req,res){
+
+    /*-------------------- Set Header -----------------------*/
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+
+    var queryBy = req.params.projectId;
+    console.log(queryBy);
+    Project.findById(queryBy ,function(err, Project){
+        if(err){
+            res.status(500).send();
+        }
+        else{
+            res.send(Project);
             console.log(Project);
         }
     });
 
 });
+
 
 module.exports = router;

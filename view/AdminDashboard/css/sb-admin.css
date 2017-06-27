@@ -325,6 +325,7 @@ ul.alert-dropdown {
 }
 .project-item {
     border: 1px solid #31B0D5;
+    margin-bottom: 4px;
 }
 .dist-img {
     width: 120px;
@@ -338,11 +339,11 @@ ul.alert-dropdown {
     padding-top: 12px;
     font-size: 34px;
     font-weight: 500;
-    margin-bottom: 1px;
+    margin-bottom: 8px;
 }
 .dist-img p {
     text-align: center;
-    font-size: 19px;
+    font-size: 15px;
 }
 .dist-info{
     width: calc(95% - 120px);
