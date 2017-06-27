@@ -4,9 +4,6 @@ angular.module('admin-controller', [])
 
 
 .controller('HomeCtrl', function($scope,$rootScope,$http,$window,$timeout,userData) {
-
-
-
     /*-------------------- Register ------------------------*/
 
     $scope.signUp = function(data, e){
